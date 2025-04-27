@@ -7,7 +7,7 @@ import httpx
 def obter_resposta(mensagem_usuario):
     try:
         # Endereço local da API FastAPI
-        url_api = "http://localhost:8000/chat"
+        url_api = "http://localhost:8000/v1/chat/"
 
         # Payload enviado para a API
         payload = {"mensagem": mensagem_usuario}
