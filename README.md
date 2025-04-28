@@ -22,6 +22,9 @@ Sistema de engajamento de fãs, composto por:
 fan-engagement/
 │
 ├── app/
+│   ├── furia_logom.png            # Imagem do cabeçalho da pagina
+│   ├── icon.png                   # Icone da pagina
+│   ├── utils.py                   # Funções utilitárias (como gerenciar interações)
 │   └── chatbot_interface.py       # Frontend Streamlit
 │
 ├── backend/
@@ -72,6 +75,7 @@ streamlit run app/chatbot_interface.py
 
 * Chatbot web para interação com usuários
 * Comunicação entre Frontend (Streamlit) e Backend (FastAPI) via API REST.
+* Interface estilizada, com logo da empresa como cabeçalho e fundo personalizado.
 * Estrutura modular preparada para:
     * Criação de Fan Score;
     * Integração com redes sociais;
