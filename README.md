@@ -30,7 +30,18 @@ fan-engagement/
 │   ├── furia_logom.png             # Imagem do cabeçalho da pagina
 │   ├── icon.png                    # Icone da pagina
 │   ├── utils.py                    # Funções utilitárias (como gerenciar interações)
-│   └── chatbot_interface.py        # Frontend Streamlit
+│   ├── __init__
+│   └── fan_score/
+│       ├── __init__.py
+│       ├── auth_twitter.py
+│       ├── form_info_pessoal.py
+│       ├── integrar_redes.py
+│       ├── upload_documentos.py
+│       └── validar_links.py
+│       
+├── Home.py 
+├── pages/
+│   └── Fan_Score.py
 │
 ├── backend/
 │   ├── main.py                     # Inicialização do FastAPI
@@ -77,7 +88,7 @@ uvicorn backend.main:app --reload --host 0.0.0.0 --port 8000
 4. Rodar o Frontend Streamlit
 
 ```bash
-streamlit run app/chatbot_interface.py
+streamlit run app/Home.py
 ```
 * A aplicação Web estará disponível no endereço informado pelo terminal
 

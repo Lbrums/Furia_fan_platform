@@ -1,7 +1,7 @@
-# app/chatbot_interface.py
+# app/Home.py
 
 import streamlit as st
-from utils import get_base64_of_image, send_message_to_chatbot
+from app.utils import get_base64_of_image, send_message_to_chatbot
 
 # Caminho para o arquivo de imagem do ícone (imagem diferente da usada no cabeçalho)
 icon_path = "app/icon.png"  # Atualize o caminho se necessário

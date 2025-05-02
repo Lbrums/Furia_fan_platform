@@ -9,7 +9,7 @@ def render_upload():
 
     doc_id_frente = st.file_uploader("Documento de identidade (frente)", type=["png", "jpg", "jpeg", "pdf"], key="doc_frente")
     doc_id_verso = st.file_uploader("Documento de identidade (verso)", type=["png", "jpg", "jpeg", "pdf"], key="doc_verso")
-    comprovante = st.file_uploader("Comprovante de residência", type=["png", "jpg", "jpeg", "pdf"], key="comprovante")
+    selfie = st.file_uploader("Selfie para validação de identidade", type=["png", "jpg", "jpeg"], key="selfie")
 
     cpf_input = st.text_input("Digite novamente seu CPF para associar os arquivos:")
 
@@ -23,7 +23,7 @@ def render_upload():
 
         salvar_arquivo(doc_id_frente, pasta_destino, "documento_frente")
         salvar_arquivo(doc_id_verso, pasta_destino, "documento_verso")
-        salvar_arquivo(comprovante, pasta_destino, "comprovante_residencia")
+        salvar_arquivo(selfie, pasta_destino, "selfie")
 
         st.success("Documentos enviados com sucesso!")
 

@@ -1,7 +1,16 @@
 import os
+import base64
 import streamlit as st
-from app.utils import get_base64_of_image
-from app.fan_score import form_info_pessoal, upload_documentos
+from app.fan_score import form_info_pessoal, upload_documentos, integrar_redes, auth_twitter
+
+def get_base64_of_image(image_path):
+    """
+    Carrega a imagem de um arquivo e a converte para base64.
+    :param image_path: Caminho do arquivo de imagem.
+    :return: string com a imagem codificada em base64.
+    """
+    with open(image_path, "rb") as img_file:
+        return base64.b64encode(img_file.read()).decode()
 
 # Variáveis para caminhos de imagens
 ICON_PATH = "app/icon.png"
@@ -34,8 +43,14 @@ STYLES = f"""
         background-size: contain;
         background-repeat: no-repeat;
         background-position: center;
-        height: 200px;
+        height: 150px; /* reduzido */
+        background-size: contain;
         margin-bottom: 30px;
+    }}
+    @media (max-width: 768px) {{
+    header {{
+        height: 100px;
+        }}
     }}
     .message-bot {{
         background-color: #1f77b4;
@@ -82,6 +97,14 @@ form_info_pessoal.render_form()
 # Etapa 2: Upload de Documentos
 st.header("2. Envie seus Documentos")
 upload_documentos.render_upload()
+
+# Etapa 3: Redes Sociais
+st.header("3. Redes Sociais")
+integrar_redes.render_social_integration()
+
+# Etapa 4: Conectar com o Twitter (OAuth2)
+st.header("4. Conectar com o Twitter")
+auth_twitter.iniciar_login_twitter()
 
 # Rodapé
 st.markdown("---")
