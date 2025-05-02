@@ -13,6 +13,7 @@ Sistema de engajamento de fãs, composto por:
 - **[httpx](https://www.python-httpx.org/)** — Cliente HTTP assíncrono para comunicação entre frontend e backend
 - **[Uvicorn](https://www.uvicorn.org/)** — Servidor ASGI para execução do FastAPI
 - **[PostgreSQL](https://www.postgresql.org/)** *(planejado para as próximas etapas)*
+- **[Requests](https://docs.python-requests.org/en/latest/)** — Biblioteca HTTP para interações com a API no frontend (Streamlit)
 
 ---
 
