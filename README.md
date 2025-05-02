@@ -1,8 +1,10 @@
 # Furia_fan_platform
-Sistema de engajamento de fãs, composto por:
+
+Sistema de engajamento de fãs da FURIA Esports, composto por:
 - Interface de Chatbot para interação com usuários
-- Backend API para processamento das mensagens
-- Estrutura modular e escalável para futuras expansões como: pontuação de fãs (Fan Score), integração com redes sociais e armazenamento de dados.
+- Backend API para processamento inteligente de mensagens
+- Integração com modelo fine-tuned baseado em GPT-4o
+- Arquitetura modular e escalável para expansão futura (Fan Score, rede sociais, base de conhecimento etc.)
 
 ---
 
@@ -10,7 +12,9 @@ Sistema de engajamento de fãs, composto por:
 
 - **[Streamlit](https://streamlit.io/)** — Frontend Web Interativo
 - **[FastAPI](https://fastapi.tiangolo.com/)** — Backend leve e de alta performance
-- **[httpx](https://www.python-httpx.org/)** — Cliente HTTP assíncrono para comunicação entre frontend e backend
+- **[OpenAI Python SDK](https://pypi.org/project/openai/)** — Integração com modelo fine-tuned GPT-4o
+- **[python-dotenv](https://pypi.org/project/python-dotenv/)** — Carregamento de variáveis sensíveis a partir de `.env`
+- **[Logging](https://docs.python.org/3/library/logging.html)** — Logging estruturado para diagnóstico e auditoria
 - **[Uvicorn](https://www.uvicorn.org/)** — Servidor ASGI para execução do FastAPI
 - **[PostgreSQL](https://www.postgresql.org/)** *(planejado para as próximas etapas)*
 - **[Requests](https://docs.python-requests.org/en/latest/)** — Biblioteca HTTP para interações com a API no frontend (Streamlit)
@@ -23,10 +27,10 @@ Sistema de engajamento de fãs, composto por:
 fan-engagement/
 │
 ├── app/
-│   ├── furia_logom.png            # Imagem do cabeçalho da pagina
-│   ├── icon.png                   # Icone da pagina
-│   ├── utils.py                   # Funções utilitárias (como gerenciar interações)
-│   └── chatbot_interface.py       # Frontend Streamlit
+│   ├── furia_logom.png             # Imagem do cabeçalho da pagina
+│   ├── icon.png                    # Icone da pagina
+│   ├── utils.py                    # Funções utilitárias (como gerenciar interações)
+│   └── chatbot_interface.py        # Frontend Streamlit
 │
 ├── backend/
 │   ├── main.py                     # Inicialização do FastAPI
@@ -41,7 +45,8 @@ fan-engagement/
 │   └── services/
 │       └── chatbot_service.py       # Lógica de geração de respostas
 │
-├── requirements.txt                # Dependências do projeto
+├── .env                             # Variáveis de ambiente (não versionado)
+├── requirements.txt                 # Dependências do projeto
 ├── README.md                        # Documentação
 ├── .gitignore                       # Arquivos a serem ignorados
 └── .streamlit/
@@ -56,14 +61,20 @@ fan-engagement/
 ```bash
 pip install -r requirements.txt
 ```
-2. Rodar o Backend FastAPI
+2. Configurar as variáveis de ambiente Crie um arquivo `.env` com o seguinte conteúdo:
+
+```bash
+OPENAI_API_KEY=sk-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+FINE_TUNED_MODEL=ft:gpt-4o-mini-2024-07-18:personal:furia-fan-platform-test-1:BSaIV4bv
+```
+3. Rodar o Backend FastAPI
 
 ```bash
 uvicorn backend.main:app --reload --host 0.0.0.0 --port 8000
 ```
 * A API estará disponível em `http://localhost:8800`
 * Documentação interativa `http://localhost:8800/docs`
-3. Rodar o Frontend Streamlit
+4. Rodar o Frontend Streamlit
 
 ```bash
 streamlit run app/chatbot_interface.py
@@ -74,9 +85,11 @@ streamlit run app/chatbot_interface.py
 
 ## 🧩 Funcionalidades Atuais
 
-* Chatbot web para interação com usuários
-* Comunicação entre Frontend (Streamlit) e Backend (FastAPI) via API REST.
+* Chatbot funcional com interface web (Streamlit)
+* Integração com modelo fine-tuned GPT-4o via OpenAI AP
 * Interface estilizada, com logo da empresa como cabeçalho e fundo personalizado.
+* Uso de logs estruturados para monitoramento e depuração
+* Variáveis sensíveis isoladas com `.env`
 * Estrutura modular preparada para:
     * Criação de Fan Score;
     * Integração com redes sociais;
@@ -87,10 +100,9 @@ streamlit run app/chatbot_interface.py
 
 ## 📈 Próximos Passos
 
-* Implementar persistência de dados em PostgreSQL.
-* Desenvolver sistema de pontuação de fãs (Fan Score).
-* Implementar autenticação e autorização para usuários.
-* Integrar com APIs de redes sociais para enriquecimento do perfil dos fãs.
+* Implementar sistema de Fan Score baseado em interações
+* Criar interface dedicada para exibir o Fan Score
+* Integrar APIs de redes sociais
 
 ---
 
