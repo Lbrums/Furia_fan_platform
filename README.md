@@ -29,8 +29,8 @@ Oferecer uma plataforma modular que permita conhecer melhor os fãs e oferecer s
 - Leitura de redes sociais e validação de perfis para análise de relevância.
 - Possível integração futura com e-commerce da FURIA.
 
-### 🔹 3. Integração com o Redes Sociais (somente X até o momento) (OAuth2)
-- Autenticação via OAuth2 (Authorization Code Flow com PKCE).
+### 🔹 3. Integração com o Redes Sociais (somente X até o momento) (OAuth)
+- Autenticação via OAuth (Authorization Code Flow com PKCE).
 - Verificação se o usuário segue a conta oficial da FURIA.
 - Armazenamento dos dados do usuário para futuras ações promocionais.
 
