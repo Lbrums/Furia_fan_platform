@@ -1,10 +1,38 @@
-# Furia_fan_platform
+# 🐺 FURIA Fan Platform
 
-Sistema de engajamento de fãs da FURIA Esports, composto por:
-- Interface de Chatbot para interação com usuários
-- Backend API para processamento inteligente de mensagens
-- Integração com modelo fine-tuned baseado em GPT-4o
-- Arquitetura modular e escalável para expansão futura (Fan Score, rede sociais, base de conhecimento etc.)
+**FURIA Fan Platform** é um projeto de engajamento com a comunidade de fãs da equipe FURIA Esports. Esta aplicação visa oferecer uma experiência interativa com:
+
+- 🤖 Chatbot de perguntas e respostas sobre o time de CS:GO da FURIA.
+- 📊 Coleta e análise de dados dos fãs (Fan Score).
+- 🔗 Integração com redes sociais (Twitter/X).
+- 🧠 Validação e análise de documentos com inteligência artificial.
+- ✅ Verificação se o usuário segue a FURIA no Twitter.
+
+---
+
+## 📌 Objetivo
+
+Oferecer uma plataforma modular que permita conhecer melhor os fãs e oferecer serviços personalizados e exclusivos. Ideal para integrar com a loja oficial, áreas VIP, eventos ou campanhas de fidelidade da FURIA Esports.
+
+---
+
+## ✨ Funcionalidades
+
+### 🔹 1. Chatbot de Fãs (Streamlit + GPT-4 API)
+- Informações sobre a line-up atual, stats, jogos, sensibilidade dos players, periféricos, .cfg etc.
+- Interface interativa desenvolvida com Streamlit.
+- Respostas geradas por modelo fine-tuned do GPT-4 com base em uma base de conhecimento JSON personalizada.
+
+### 🔹 2. Fan Score
+- Coleta de dados pessoais e interesses dos fãs.
+- Upload de documentos e validação de identidade via IA.
+- Leitura de redes sociais e validação de perfis para análise de relevância.
+- Possível integração futura com e-commerce da FURIA.
+
+### 🔹 3. Integração com o Redes Sociais (somente X até o momento) (OAuth2)
+- Autenticação via OAuth2 (Authorization Code Flow com PKCE).
+- Verificação se o usuário segue a conta oficial da FURIA.
+- Armazenamento dos dados do usuário para futuras ações promocionais.
 
 ---
 
@@ -37,7 +65,7 @@ fan-engagement/
 │       ├── form_info_pessoal.py
 │       ├── integrar_redes.py
 │       ├── upload_documentos.py
-│       └── validar_links.py
+│       └── validar_doc.py
 │       
 ├── Home.py 
 ├── pages/
@@ -77,6 +105,8 @@ pip install -r requirements.txt
 ```bash
 OPENAI_API_KEY=sk-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 FINE_TUNED_MODEL=ft:gpt-4o-mini-2024-07-18:personal:furia-fan-platform-test-1:BSaIV4bv
+TWITTER_API_KEY=xxxxxxxxxxxxxxxxxxxxxxxxx
+TWITTER_API_SECRET=xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 ```
 3. Rodar o Backend FastAPI
 
@@ -88,7 +118,7 @@ uvicorn backend.main:app --reload --host 0.0.0.0 --port 8000
 4. Rodar o Frontend Streamlit
 
 ```bash
-streamlit run app/Home.py
+streamlit run Home.py
 ```
 * A aplicação Web estará disponível no endereço informado pelo terminal
 
@@ -111,9 +141,10 @@ streamlit run app/Home.py
 
 ## 📈 Próximos Passos
 
-* Implementar sistema de Fan Score baseado em interações
-* Criar interface dedicada para exibir o Fan Score
-* Integrar APIs de redes sociais
+* Envio de notificações personalizadas por e-mail ou redes sociais.
+* Dashboard com dados agregados dos fãs.
+* Recompensas baseadas no Fan Score.
+* Integração com API da loja da FURIA.
 
 ---
 
