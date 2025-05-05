@@ -39,6 +39,10 @@ def verificar_identidade(pasta_usuario: Path) -> bool:
     Compara o rosto da selfie com o rosto presente na imagem da frente do documento.
     Retorna True se os rostos forem compatíveis.
     """
+
+    if isinstance(pasta_usuario, str):
+        pasta_usuario = Path(pasta_usuario)
+
     caminho_doc_frente = next(pasta_usuario.glob("documento_frente.*"), None)
     caminho_selfie = next(pasta_usuario.glob("selfie.*"), None)
 

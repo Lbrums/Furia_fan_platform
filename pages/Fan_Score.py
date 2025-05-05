@@ -13,6 +13,8 @@ from app.fan_score import (
     auth_twitter,
     validar_doc
 )
+from app.fan_score.integrar_redes import render_social_integration
+
 
 # === Funções auxiliares ===
 def get_image_base64_if_exists(image_path):
@@ -79,7 +81,12 @@ with st.expander("2. Verificação de Identidade", expanded=False):
     upload_documentos.render_upload()
     cpf_verificacao = st.text_input("Digite seu CPF para verificação:", key="doc_cpf")
     if st.button("Validar Documentos"):
-        validar_doc.verificar_identidade(cpf_verificacao)
+        path_verificacao = Path("documentos_fan") / cpf_verificacao
+        resultado = validar_doc.verificar_identidade(path_verificacao)
+        if resultado:
+            st.success("✅ Identidade verificada com sucesso!")
+        else:
+            st.error("❌ Não foi possível verificar a identidade. Verifique os arquivos enviados.")
 
 # 3. Conexão com Twitter
 with st.expander("3. Conexão Twitter", expanded=False):
@@ -92,6 +99,10 @@ with st.expander("3. Conexão Twitter", expanded=False):
         - Usuário: @{user_data.get('screen_name')}
         - Segue a FURIA: {'Sim' if st.session_state.get('twitter_follows_furia') else 'Não'}
         """)
+
+# 4. Outras Redes
+with st.expander("4. Outras Redes", expanded=False):
+    render_social_integration()
 
 # === Rodapé ===
 st.markdown("---")
