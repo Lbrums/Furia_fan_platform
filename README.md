@@ -36,16 +36,23 @@ Oferecer uma plataforma modular que permita conhecer melhor os fãs e oferecer s
 
 ---
 
-## 📚 Tecnologias Utilizadas
+## 🧰 Tecnologias Utilizadas
 
-- **[Streamlit](https://streamlit.io/)** — Frontend Web Interativo
-- **[FastAPI](https://fastapi.tiangolo.com/)** — Backend leve e de alta performance
-- **[OpenAI Python SDK](https://pypi.org/project/openai/)** — Integração com modelo fine-tuned GPT-4o
-- **[python-dotenv](https://pypi.org/project/python-dotenv/)** — Carregamento de variáveis sensíveis a partir de `.env`
-- **[Logging](https://docs.python.org/3/library/logging.html)** — Logging estruturado para diagnóstico e auditoria
-- **[Uvicorn](https://www.uvicorn.org/)** — Servidor ASGI para execução do FastAPI
-- **[PostgreSQL](https://www.postgresql.org/)** *(planejado para as próximas etapas)*
-- **[Requests](https://docs.python-requests.org/en/latest/)** — Biblioteca HTTP para interações com a API no frontend (Streamlit)
+- **[Streamlit](https://streamlit.io/)** — Frontend Web Interativo para exibição do chatbot e coleta de dados dos fãs  
+- **[FastAPI](https://fastapi.tiangolo.com/)** — Backend leve e de alta performance usado para autenticação e APIs REST  
+- **[OpenAI Python SDK](https://pypi.org/project/openai/)** — Integração com o modelo fine-tuned GPT-4o para o chatbot inteligente  
+- **[python-dotenv](https://pypi.org/project/python-dotenv/)** — Gerenciamento de variáveis de ambiente sensíveis através de arquivos `.env`  
+- **[Logging](https://docs.python.org/3/library/logging.html)** — Sistema de logging estruturado para registro e auditoria de eventos e falhas  
+- **[Uvicorn](https://www.uvicorn.org/)** — Servidor ASGI para execução das rotas do FastAPI com alta performance  
+- **[Requests](https://docs.python-requests.org/en/latest/)** — Biblioteca para requisições HTTP, utilizada principalmente na comunicação com a API do Twitter  
+- **[face_recognition](https://github.com/ageitgey/face_recognition)** — Verificação de identidade por reconhecimento facial a partir de documentos enviados  
+- **[Pillow (PIL)](https://pypi.org/project/Pillow/)** — Processamento de imagens (auxiliar ao face_recognition)  
+- **[OAuthlib](https://oauthlib.readthedocs.io/)** — Biblioteca para gerenciamento do fluxo de autenticação OAuth2 com PKCE  
+- **[httpx](https://www.python-httpx.org/)** *(alternativa ao Requests)* — Cliente HTTP moderno com suporte assíncrono (possivelmente usado futuramente com FastAPI)  
+- **[PostgreSQL](https://www.postgresql.org/)** *(planejado para as próximas etapas)* — Banco de dados relacional robusto para persistência segura e análise dos dados dos fãs  
+- **[Pandas](https://pandas.pydata.org/)** — Manipulação e análise de dados estruturados (útil para Fan Score e relatórios futuros)  
+- **[Matplotlib](https://matplotlib.org/)** *(opcional/futuro)* — Visualizações gráficas para dashboards e análise de dados dos fãs  
+- **[base64](https://docs.python.org/3/library/base64.html)** — Codificação de arquivos e dados binários para transmissão segura em formatos como JSON e URL  
 
 ---
 
@@ -94,6 +101,22 @@ fan-engagement/
 
 ---
 
+## 🔧 Dependências de Sistema
+
+Para garantir que todas as bibliotecas funcionem corretamente (especialmente aquelas que envolvem processamento de imagem e autenticação facial), é necessário que o ambiente contenha alguns pré-requisitos instalados no sistema operacional:
+
+- **[CMake](https://cmake.org/)** — Necessário para compilar dependências C/C++ como `dlib`, utilizado por `face_recognition`
+- **[Visual Studio Build Tools](https://visualstudio.microsoft.com/visual-cpp-build-tools/)** *(Windows)* — Necessário para compilar extensões nativas no ambiente Windows
+- **[Poppler](https://github.com/oschwartz10612/poppler-windows)** — Requisito caso seja necessário converter PDF para imagem em módulos futuros
+- **`libboost`, `libjpeg`, `libpng`, `libopenblas`** — *(Linux)* Dependências comuns ao instalar `dlib` ou bibliotecas de visão computacional
+- **`face_recognition`** também exige o `dlib`, que requer compiladores compatíveis e suporte à arquitetura SIMD
+
+Para instalar no Ubuntu/Debian:
+
+```bash
+sudo apt update
+sudo apt install cmake build-essential libboost-all-dev libopenblas-dev libjpeg-dev libpng-dev
+```
 ## 🚀 Como executar o projeto
 1. Instalação de Dependências
 
